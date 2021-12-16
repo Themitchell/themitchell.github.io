@@ -1,2 +1,2 @@
 # and-e.tech
-Web Developer / DevOps Consultaning by `&amp;e Tech`
+Web Developer / DevOps Consultaning by &e Tech
