@@ -6,3 +6,5 @@ analytics:
   google:
     measurement_id: "G-SPZK39FN6E"
     anonymize_ip: true
+plugins:
+  - jekyll-include-cache
