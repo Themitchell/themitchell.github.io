@@ -1,3 +1,8 @@
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 title: "&e Tech"
 description: Software engineering and DevOps Consulting
+analytics:
+  provider: "google-gtag"
+  google:
+    measurement_id: "G-SPZK39FN6E"
+    anonymize_ip: true
