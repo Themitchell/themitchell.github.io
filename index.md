@@ -1,6 +1,5 @@
 ---
-layout: page
-title: About
+layout: home
 ---
 
 Software engineering and DevOps Consultant with over 10 years experience working remotely with clients, large and small, to upskill teams and build proven large scale digital products and platforms.
