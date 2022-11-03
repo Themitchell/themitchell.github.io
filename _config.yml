@@ -1,10 +1,56 @@
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 title: "&e Tech"
+subtitle: Software engineering and DevOps Consulting
 description: Software engineering and DevOps Consulting
+url: "https://and-e.tech"
+repository: "themitchell/and-e.tech"
+timezone: Europe/London
+
+footer:
+  links:
+    - label: "and-e.tech"
+      icon: "fas fa-fw fa-link"
+      url: "https://and-e.tech"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/themitchell"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/andy-mitchell-46b699215/"
+
+author:
+  name: "Andy Mitchell"
+  avatar: "/assets/images/avatar.jpg"
+  bio: "Software engineer and DevOps consultant"
+  links:
+    - label: "and-e.tech"
+      icon: "fas fa-fw fa-link"
+      url: "https://and-e.tech"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/themitchell"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/andy-mitchell-46b699215/"
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+
 analytics:
   provider: "google-gtag"
   google:
     measurement_id: "G-SPZK39FN6E"
     anonymize_ip: true
+
 plugins:
   - jekyll-include-cache
