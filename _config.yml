@@ -7,17 +7,12 @@ url: "https://and-e.tech"
 repository: "themitchell/and-e.tech"
 timezone: Europe/London
 
-footer:
-  links:
-    - label: "and-e.tech"
-      icon: "fas fa-fw fa-link"
-      url: "https://and-e.tech"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/themitchell"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/andy-mitchell-46b699215/"
+plugins:
+  - jekyll-include-cache
+
+include:
+  - "_pages"
+  - "_katas"
 
 author:
   name: "Andy Mitchell"
@@ -35,7 +30,12 @@ author:
       url: "https://www.linkedin.com/in/andy-mitchell-46b699215/"
 
 defaults:
-  # _posts
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
   - scope:
       path: ""
       type: posts
@@ -46,6 +46,18 @@ defaults:
       comments: true
       share: true
       related: true
+  - scope:
+      path: ""
+      type: katas
+    values:
+      layout: single
+      author_profile: false
+      share: true
+
+collections:
+  katas:
+    output: true
+    permalink: /:collection/:path/
 
 analytics:
   provider: "google-gtag"
@@ -53,5 +65,14 @@ analytics:
     measurement_id: "G-SPZK39FN6E"
     anonymize_ip: true
 
-plugins:
-  - jekyll-include-cache
+footer:
+  links:
+    - label: "and-e.tech"
+      icon: "fas fa-fw fa-link"
+      url: "https://and-e.tech"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/themitchell"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/andy-mitchell-46b699215/"
