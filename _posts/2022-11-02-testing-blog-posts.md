@@ -1,10 +1,8 @@
 ---
-layout: post
+layout: single
 date: "2022-11-02"
 title: "Testing blog posts"
-published: false
+published: true
 ---
-
-# Testing blog posts
 
 This is a test post
