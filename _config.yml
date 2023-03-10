@@ -6,6 +6,7 @@ description: Software engineering and DevOps Consulting
 url: "https://and-e.tech"
 repository: "themitchell/and-e.tech"
 timezone: Europe/London
+logo: "/assets/images/and-e-tech-logo-300.svg"
 
 plugins:
   - jekyll-include-cache
