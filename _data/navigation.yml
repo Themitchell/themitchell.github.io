@@ -3,3 +3,6 @@ main:
     url: /posts
   - title: "Katas"
     url: /katas
+  - title: "Workshops"
+    url: /workshops
+
