@@ -54,9 +54,19 @@ defaults:
       layout: single
       author_profile: false
       share: true
+  - scope:
+      path: ""
+      type: workshops
+    values:
+      layout: single
+      author_profile: false
+      share: true
 
 collections:
   katas:
+    output: true
+    permalink: /:collection/:path/
+  workshops:
     output: true
     permalink: /:collection/:path/
 
