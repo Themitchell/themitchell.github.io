@@ -1,6 +1,7 @@
 ---
 layout: single
 title: "React - Intro to React"
+date: "2023-03-15"
 published: true
 ---
 
