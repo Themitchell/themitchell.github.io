@@ -1,0 +1,53 @@
+{% if jekyll.environment == "production" %}
+<style>
+  #cookie-notice{position:fixed;z-index:9999;left:0;right:0;bottom:0;display:flex;gap:.75rem;align-items:center;justify-content:center;flex-wrap:wrap;padding:.85rem 1rem;background:#111;color:#fff;font-size:.95rem;line-height:1.35}
+  #cookie-notice a{color:#fff;text-decoration:underline}
+  #cookie-notice .btn{border:0;border-radius:.5rem;padding:.45rem .85rem;cursor:pointer}
+  #cookie-notice .btn-approve{background:#0ea5e9;color:#fff}
+  #cookie-notice .btn-more{background:transparent;border:1px solid #fff;color:#fff}
+</style>
+
+<div id="cookie-notice" role="region" aria-label="Cookie notice">
+  <span>
+    This site uses analytics cookies only if you accept. See our <a href="{{ '/privacy/' | relative_url }}">Privacy policy</a> for details.
+  </span>
+  <button id="cookie-notice-accept" class="btn btn-approve" type="button">Accept</button>
+  <button id="cookie-notice-reject" class="btn btn-more" type="button">Reject</button>
+</div>
+
+<script>
+(function(){
+  function setCookie(value){
+    var secure = (location.protocol === 'https:') ? '; Secure' : '';
+    document.cookie = 'cookie-consent=' + value + '; Max-Age=2592000; Path=/; SameSite=Lax' + secure;
+  }
+  function getConsent(){
+    var match = document.cookie.match(/(?:^|;\s*)cookie-consent=([^;]+)/);
+    return match ? match[1] : null;
+  }
+  function hideBanner(){
+    var el = document.getElementById('cookie-notice');
+    if(el) el.style.display = 'none';
+  }
+
+  if (getConsent()) hideBanner();
+
+  var acceptBtn = document.getElementById('cookie-notice-accept');
+  if (acceptBtn){
+    acceptBtn.addEventListener('click', function(){
+      setCookie('accepted');
+      hideBanner();
+      document.dispatchEvent(new CustomEvent('cookie:accepted'));
+    });
+  }
+
+  var rejectBtn = document.getElementById('cookie-notice-reject');
+  if (rejectBtn){
+    rejectBtn.addEventListener('click', function(){
+      setCookie('rejected');
+      hideBanner();
+    });
+  }
+})();
+</script>
+{% endif %}

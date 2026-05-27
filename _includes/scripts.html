@@ -1,0 +1,97 @@
+{% if site.footer_scripts %}
+  {% for script in site.footer_scripts %}
+    <script src="{{ script | relative_url }}"></script>
+  {% endfor %}
+{% else %}
+  <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+{% endif %}
+
+{% if site.search == true or page.layout == "search" %}
+  {%- assign search_provider = site.search_provider | default: "lunr" -%}
+  {%- case search_provider -%}
+    {%- when "lunr" -%}
+      {% include_cached search/lunr-search-scripts.html %}
+    {%- when "google" -%}
+      {% include_cached search/google-search-scripts.html %}
+    {%- when "algolia" -%}
+      {% include_cached search/algolia-search-scripts.html %}
+  {%- endcase -%}
+{% endif %}
+
+{% if jekyll.environment == "production" %}
+
+  {%- capture _analytics_tpl -%}{% include analytics.html %}{%- endcapture -%}
+  {%- capture _comments_tpl -%}{% include /comments-providers/scripts.html %}{%- endcapture -%}
+
+  <template id="tpl-analytics">{{ _analytics_tpl | strip }}</template>
+  <template id="tpl-comments">{{ _comments_tpl | strip }}</template>
+
+  <script>
+  (function(){
+    function hasConsent(){
+      return document.cookie.indexOf('cookie-consent=accepted') > -1;
+    }
+    function once(fn){
+      var done = false;
+      return function(){
+        if (done) return;
+        done = true;
+        fn();
+      };
+    }
+
+    function injectTemplate(id){
+      var tpl = document.getElementById(id);
+      if (!tpl || tpl.dataset.loaded === '1') return;
+      var frag = tpl.content ? tpl.content.cloneNode(true) : (function(){
+        var div = document.createElement('div');
+        div.innerHTML = tpl.innerHTML;
+        var f = document.createDocumentFragment();
+        while (div.firstChild) { f.appendChild(div.firstChild); }
+        return f;
+      })();
+
+      Array.from(frag.querySelectorAll('script')).forEach(function(old){
+        var s = document.createElement('script');
+        for (var i = 0; i < old.attributes.length; i++) {
+          var a = old.attributes[i];
+          s.setAttribute(a.name, a.value);
+        }
+        if (!old.src) s.textContent = old.textContent;
+        old.replaceWith(s);
+      });
+
+      document.body.appendChild(frag);
+      tpl.dataset.loaded = '1';
+    }
+
+    function hydrateEmbeds(){
+      document.querySelectorAll('[data-consent-src]').forEach(function(el){
+        if (el.dataset.loaded === '1') return;
+        el.setAttribute('src', el.getAttribute('data-consent-src'));
+        el.dataset.loaded = '1';
+      });
+    }
+
+    var loadAllThirdParty = once(function(){
+      injectTemplate('tpl-analytics');
+      injectTemplate('tpl-comments');
+      hydrateEmbeds();
+      document.dispatchEvent(new CustomEvent('thirdparty:loaded'));
+    });
+
+    if (hasConsent()) loadAllThirdParty();
+    document.addEventListener('cookie:accepted', loadAllThirdParty);
+  })();
+  </script>
+
+{% else %}
+  {% include analytics.html %}
+  {% include /comments-providers/scripts.html %}
+{% endif %}
+
+{% if site.after_footer_scripts %}
+  {% for script in site.after_footer_scripts %}
+    <script src="{{ script | relative_url }}"></script>
+  {% endfor %}
+{% endif %}

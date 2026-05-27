@@ -11,3 +11,20 @@ search: false
 .site-logo img {
   max-height: 5rem;
 }
+
+.page__footer-legal {
+  font-size: 0.85em;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.page__footer-follow .social-icons {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.page__footer-follow .social-icons li {
+  display: inline-block;
+  float: none;
+}

@@ -1,0 +1,19 @@
+<div class="page__footer-legal">
+  <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
+  &nbsp;·&nbsp;
+  <a href="#" id="cookie-reset">Cookie settings</a>
+</div>
+
+<script>
+(function(){
+  var link = document.getElementById('cookie-reset');
+  if (!link) return;
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    document.cookie = 'cookie-consent=; Max-Age=0; Path=/';
+    var banner = document.getElementById('cookie-notice');
+    if (banner) { banner.style.display = ''; }
+    else { location.reload(); }
+  });
+})();
+</script>

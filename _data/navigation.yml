@@ -5,4 +5,6 @@ main:
     url: /katas
   - title: "Workshops"
     url: /workshops
+  - title: "Privacy"
+    url: /privacy
 
