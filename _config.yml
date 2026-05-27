@@ -74,8 +74,7 @@ collections:
 analytics:
   provider: "google-gtag"
   google:
-    measurement_id: "G-SPZK39FN6E"
-    anonymize_ip: true
+    tracking_id: "G-SPZK39FN6E"
 
 footer:
   links:
