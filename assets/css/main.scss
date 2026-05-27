@@ -15,16 +15,20 @@ search: false
 .page__footer-legal {
   font-size: 0.85em;
   margin-bottom: 0.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 .page__footer-follow .social-icons {
   margin: 0;
   padding: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .page__footer-follow .social-icons li {
-  display: inline-block;
-  float: none;
+  display: list-item;
+  float: left;
+}
+
+.page__footer-copyright {
+  clear: both;
 }
